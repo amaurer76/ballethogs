@@ -1,4 +1,4 @@
-const CACHE = 'pas-de-notes-v3';
+const CACHE = 'pas-de-notes-v4';
 const ASSETS = ['/', '/index.html', '/style.css', '/app.js', '/game.js', '/manifest.webmanifest', '/icon.svg'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)));

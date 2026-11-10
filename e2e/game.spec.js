@@ -12,7 +12,9 @@ test('ten-note dance scrolls the meadow, wins, and resets', async ({ page }) => 
   }
   await expect(page.locator('#result-title')).toHaveText('Take a bow.');
   await expect(page.locator('.scenery-track')).toHaveCSS('animation-play-state', 'paused');
-  await page.locator('#play-again').click();
+  await page.locator('#next-level').click();
+  await expect(page.locator('#level-select')).toHaveValue('1');
+  await expect(page.locator('#stage')).toHaveAttribute('data-theme', 'autumn');
   await expect(page.locator('#progress')).toHaveText('0 / 10 notes');
   await expect(page.locator('#timer')).toHaveText('Play do to start');
   await expect(page.locator('.scenery-track')).toHaveCSS('animation-play-state', 'running');
@@ -53,7 +55,7 @@ test('phone layout and hidden hints', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto('/');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  await page.locator('#hints').uncheck();
+  await page.locator('#mode').selectOption('ear');
   await expect(page.locator('.target')).toHaveCount(0);
   await page.screenshot({ path: 'test-results/mobile.png', fullPage: true });
 });
@@ -73,4 +75,33 @@ test('scenery and dance continue without input; key reactions are temporary', as
   await expect(page.locator('#dancer')).toHaveClass(/hop/);
   await expect(page.locator('#dancer')).not.toHaveClass(/hop/);
   await expect(track).toHaveCSS('animation-play-state', 'running');
+});
+
+test('all six level scenes load and ear mode never reveals the target', async ({ page }) => {
+  const errors = [];
+  page.on('pageerror', error => errors.push(error.message));
+  await page.goto('/');
+  const themes = ['meadow', 'autumn', 'mountain', 'lake', 'moonlight', 'palace'];
+  for (let i = 0; i < themes.length; i++) {
+    await page.locator('#level-select').selectOption(String(i));
+    await expect(page.locator('#stage')).toHaveAttribute('data-theme', themes[i]);
+    await expect(page.locator('.melody [data-step]')).toHaveCount(i + 3);
+    await expect(page.locator('#progress')).toHaveText('0 / 10 notes');
+  }
+  await page.locator('#mode').selectOption('ear');
+  await page.locator('#listen').click();
+  await expect(page.locator('.target, .melody .current, .piano-key.listening')).toHaveCount(0);
+  await expect(page.locator('#feedback')).not.toContainText('C4');
+  await page.keyboard.press('a');
+  await expect(page.locator('#listen')).toBeEnabled();
+  await page.locator('#listen').click();
+  await expect(page.locator('.target, .melody .current, .piano-key.listening')).toHaveCount(0);
+  await page.locator('#level-select').selectOption('2');
+  await expect(page.locator('#mode')).toHaveValue('ear');
+  await expect(page.locator('#timer')).toHaveText('Play do to start');
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.locator('#level-select').selectOption('5');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.screenshot({ path: 'test-results/palace-mobile.png', fullPage: true });
+  expect(errors).toEqual([]);
 });

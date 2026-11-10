@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { newGame, playNote, melody } from '../game.js';
+import { newGame, playNote, melody, scale, levels } from '../game.js';
 test('ten correct notes complete the dance, starting with do', () => {
   let state = newGame();
   assert.equal(state.sequence.length, 10);
@@ -10,6 +10,21 @@ test('ten correct notes complete the dance, starting with do', () => {
   assert.equal(state.status, 'won');
   assert.equal(state.step, 10);
   assert.equal(playNote(state, 'F4'), state);
+});
+
+test('each level adds exactly one scale note and guarantees practice of it', () => {
+  for (let level = 0; level < levels.length; level++) {
+    for (const random of [0, .5, .99]) {
+      let state = newGame(() => random, level);
+      const pool = scale.slice(0, level + 3);
+      assert.equal(state.level, level);
+      assert.equal(state.sequence.length, 10);
+      assert.ok(state.sequence.every(note => pool.includes(note)));
+      if (level > 0) assert.ok(state.sequence.includes(pool.at(-1)));
+      for (const note of state.sequence) state = playNote(state, note);
+      assert.equal(state.status, 'won');
+    }
+  }
 });
 test('wrong notes and timeouts accumulate without advancing progress', () => {
   let state = newGame(() => .5);

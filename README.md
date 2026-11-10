@@ -10,7 +10,22 @@ Requires Node.js 18 or newer. No runtime dependencies; local development and bui
 npm run dev
 ```
 
-Open http://127.0.0.1:5173. Play **do** to start; each leap automatically plays the next target. **Hear note again** replays it. White keys: A S D F G H J K. Black keys: W E T Y U. Turn off **Show hints** to practice by ear. **Start over** resets progress, mistakes, and timers.
+Open http://127.0.0.1:5173. Play **do** to start; each leap automatically plays the next target. **Hear note again** replays it. White keys: A S D F G H J K. Black keys: W E T Y U. Choose **By ear · sound only** to practice without target highlights or answer text. **Guided** mode shows the target. Switching level or mode resets the current round and cancels its timers; your selected mode carries into the next level. **Start over** retries the selected level.
+
+## Levels
+
+Each level needs ten correct notes and allows three misses. The first level uses do, re, and mi. Each later level retains the earlier notes and adds one new pitch, guaranteed to appear at least once per round.
+
+| Level | Setting | Added note |
+| --- | --- | --- |
+| 1 | Meadow | Do, re, mi (C4, D4, E4) |
+| 2 | Autumn woods | Fa (F4) |
+| 3 | Mountain pass | Sol (G4) |
+| 4 | Lakeside | La (A4) |
+| 5 | Moonlit garden | Ti (B4) |
+| 6 | Palace finale | High do (C5) |
+
+Use **Next level** after a win, or choose any level from the selector to practice. Each setting has its own colors and scenery. Progress is not saved across page reloads.
 
 ## Verify and build
 
@@ -32,4 +47,4 @@ Import this repository into Netlify. The included `netlify.toml` sets build comm
 
 No server, API keys, database, or environment variables required. Audio is synthesized with Web Audio after a click or key press; no sample downloads. The manifest and service worker support installation in compatible browsers and offline play after the first successful online load. Optional Google Fonts fall back to local fonts offline. Service worker registration is disabled on localhost to keep development fresh. Update the cache version in `sw.js` when changing cached assets.
 
-This prototype has one randomized ten-note level using three pitches. It does not include microphone input or MIDI hardware support.
+This prototype includes six randomized ten-note levels across the C major octave. It does not include microphone input or MIDI hardware support.
