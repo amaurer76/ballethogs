@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#304b3c">
+  <meta name="description" content="A tiny ear-training adventure. Find the notes, keep your footing, and dance past the groundhogs.">
+  <title>Pas de Notes — A little ballet for your ears</title>
+  <link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="manifest" href="/manifest.webmanifest"><link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="/" aria-label="Pas de Notes home"><span class="brand-icon">♫</span> pas de notes<span class="brand-dot">.</span></a><span class="edition">AN EAR-TRAINING ADVENTURE <span class="prototype">PROTOTYPE 01</span></span></header>
+  <main>
+    <section class="intro"><div><div class="eyebrow"><span></span> A LITTLE BALLET FOR YOUR EARS</div><h1>Find your notes.<br><em>Find your feet.</em></h1><p>A few piano keys. A brave little ballerina.<br>One very hungry audience underground.</p></div><div class="intro-note"><span class="scribble">♪</span><p>Good ears.<br>Graceful landings.</p><svg viewBox="0 0 100 60" aria-hidden="true"><path d="M10 8Q20 65 85 35m-15-4 17 3-9 16" fill="none" stroke="currentColor" stroke-width="2"/></svg></div></section>
+    <section class="game" aria-label="Ballet ear training game">
+      <div class="stage-header"><div><span class="level">01</span><span>THE FIRST STEPS <small>Meadow rehearsal</small></span></div><div class="lives" aria-label="3 chances remaining"><span class="life">♥</span><span class="life">♥</span><span class="life">♥</span><span class="chances">3 chances</span></div></div>
+      <div class="stage" id="stage">
+        <div class="scene-label">THE MEADOW <span>↗</span></div>
+        <svg class="landscape" viewBox="0 0 1100 380" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+          <defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#dce7dc"/><stop offset="1" stop-color="#f1efdb"/></linearGradient><pattern id="soil" width="30" height="28" patternUnits="userSpaceOnUse"><path d="m4 9 3 1m14 12 4-2" stroke="#bca884" stroke-width="2"/></pattern></defs>
+          <path fill="url(#sky)" d="M0 0h1100v380H0z"/><circle cx="837" cy="81" r="39" fill="#faf4d7"/>
+          <g fill="#f8f8ee" opacity=".72"><path d="M130 65c0-20 27-22 33-7 16-20 46-7 41 11h-79z"/><path d="M530 100c-4-17 17-28 28-15 17-29 51-13 48 7 19-4 27 9 24 14h-103z"/></g>
+          <path d="M0 206Q120 115 286 206T602 175T900 193T1100 154V340H0" fill="#b9ceba"/><path d="M0 260Q200 177 368 257T729 239T1100 226V340H0" fill="#91b49a"/>
+          <g fill="#668e78"><path d="M34 270Q-24 211 35 139q56 78-1 131M1015 275q-75-59-16-139 71 72 16 139M1085 278q-50-63 1-100 49 63-1 100"/></g><g stroke="#637d60" stroke-width="3"><path d="M34 220v99m971-103v100m80-88v90"/></g>
+          <path d="M0 302Q200 277 400 302t400-3 300 0v81H0" fill="#71956d"/><path d="M0 321Q200 302 400 321t400-3 300 0v62H0" fill="#d5c3a0"/><path d="M0 337h1100v43H0z" fill="url(#soil)"/>
+          <g stroke="#537956" stroke-width="2" fill="none"><path d="m95 309-5-13m5 13 5-17m420 15-4-14m4 14 6-10m389 11-4-14m4 14 7-17m-206 24-4-12m4 12 6-17"/></g><g fill="#f9e6ad"><circle cx="100" cy="292" r="4"/><circle cx="916" cy="288" r="4"/><circle cx="716" cy="299" r="3"/></g>
+          <g transform="translate(935 244)"><path d="M0 71V-30" stroke="#536f53" stroke-width="3"/><path d="M2-30h39l-10 13 10 13H2" fill="#f0dfad"/><path d="m13-19 5 5 9-10" fill="none" stroke="#5d795d" stroke-width="2"/></g>
+          <g transform="translate(570 322)"><g id="groundhog"><ellipse cy="7" rx="27" ry="8" fill="#8b795f"/><path d="M-15 9v-13q0-22 15-22t15 22v13" fill="#a88968"/><circle cx="-12" cy="-19" r="6" fill="#a88968"/><circle cx="12" cy="-19" r="6" fill="#a88968"/><ellipse cy="0" rx="9" ry="7" fill="#d9bd92"/><circle cx="-6" cy="-10" r="2" fill="#3e3b30"/><circle cx="6" cy="-10" r="2" fill="#3e3b30"/><path d="m-3-2 3 3 3-3" fill="#514137"/></g></g>
+        </svg>
+        <div class="stepping-stones" aria-hidden="true"><span>DO</span><span>RE</span><span>MI</span></div>
+        <div class="dancer-position" id="dancer-position"><svg class="dancer" id="dancer" viewBox="0 0 100 150" role="img" aria-label="Ballerina on the meadow stage"><ellipse class="shadow" cx="50" cy="143" rx="22" ry="4" fill="#46694b" opacity=".2"/><g class="figure"><path d="m47 96 2 25-8 20m13-45 12 16 14-10" fill="none" stroke="#e3b098" stroke-width="7" stroke-linecap="round"/><path d="m41 137-3 7 8-2m30-41 7-3-1 8" fill="#b56a6e"/><path d="M44 51 29 65 17 47m40 4 14 9 14-18" fill="none" stroke="#e3b098" stroke-width="6" stroke-linecap="round"/><path d="M41 49h17l2 33H38z" fill="#b86c7a"/><path d="M39 78Q25 89 19 99q29 15 62-1L59 78" fill="#e8a7ae"/><path d="m39 82-9 19m17-19-2 23m11-23 12 20" stroke="#c5828e" stroke-width="2" fill="none"/><path d="M47 39h8v13h-8z" fill="#e3b098"/><ellipse cx="50" cy="29" rx="14" ry="17" fill="#e9b9a0"/><path d="M36 31q-9-24 12-23 19-2 17 22-7-3-10-13-5 12-19 14" fill="#544438"/><circle cx="41" cy="9" r="9" fill="#544438"/><path d="m35 15 15-3" stroke="#d992a0" stroke-width="3"/><path d="m53 31 3 0" stroke="#544438" stroke-width="2" stroke-linecap="round"/><circle cx="59" cy="36" r="3" fill="#da9387"/></g></svg></div>
+        <div class="swarm" aria-hidden="true"><svg width="60" height="50" viewBox="-30 -30 60 50"><use href="#groundhog"/></svg><svg width="60" height="50" viewBox="-30 -30 60 50"><use href="#groundhog"/></svg><svg width="60" height="50" viewBox="-30 -30 60 50"><use href="#groundhog"/></svg><svg width="60" height="50" viewBox="-30 -30 60 50"><use href="#groundhog"/></svg><svg width="60" height="50" viewBox="-30 -30 60 50"><use href="#groundhog"/></svg><b>POOF!</b></div>
+        <div class="stage-result" id="stage-result" hidden><span id="result-kicker"></span><h2 id="result-title"></h2><p id="result-copy"></p><button id="play-again">Dance again <span>↻</span></button></div>
+        <div class="stage-caption" id="stage-caption">Every great dance starts with a little <em>do.</em></div>
+      </div>
+      <div class="controls">
+        <div class="lesson-row"><div><div class="eyebrow">TEN NOTES THROUGH THE MEADOW</div><div class="melody" aria-label="Possible notes: do re mi"><span data-step="0">do <small>C</small></span><i>·</i><span data-step="1">re <small>D</small></span><i>·</i><span data-step="2">mi <small>E</small></span></div></div><button class="listen" id="listen"><span>▶</span> Hear note again</button></div>
+        <div class="round-status"><span id="progress">0 / 10 notes</span><span id="timer" role="timer" aria-label="Time remaining">Play do to start</span></div><div class="time-track" aria-hidden="true"><div id="time-fill"></div></div>
+        <div class="instruction"><p id="feedback" aria-live="polite">Start with <strong>do (C)</strong>. Follow the glowing key.</p><label class="hint-toggle"><input type="checkbox" id="hints" checked><span class="switch"></span>Show hints</label></div>
+        <div class="keyboard" id="keyboard" role="group" aria-label="Piano keyboard"></div>
+        <div class="keyboard-footer"><span><span class="keycap">A</span> – <span class="keycap">K</span> on your keyboard <span class="desktop-tip"> · black keys W E T Y U</span></span><button class="reset" id="reset">↻ <span>Start over</span></button></div>
+      </div>
+    </section>
+    <section class="rules" aria-label="How to play"><div><span class="rule-icon">♫</span><p><strong>Listen, then find it</strong><span>Play do to start. Five seconds per note.</span></p></div><div><span class="rule-icon">✧</span><p><strong>Keep her dancing</strong><span>Find ten notes to cross the meadow.</span></p></div><div><span class="rule-icon groundhog-icon">••</span><p><strong>Mind the groundhogs</strong><span>Wrong or late? Three misses is dinner.</span></p></div></section>
+  </main>
+  <footer><span>A small game about listening closely.</span><span>MADE FOR A LITTLE PLAY <span>✳</span></span></footer>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
